@@ -7,6 +7,10 @@ import { getApiConfiguration } from "./store/homeSlice";
 
 import Home from "./pages/home/home";
 import Header from "./components/header/Header";
+import Details from "./pages/details/Details";
+import SearchResult from "./pages/searchResult/SearchResult";
+import Explore from "./pages/explore/Explore";
+import PageNotFound from "./pages/404/PageNotFound";
 
 function App() {
   const dispatch = useDispatch();
@@ -33,16 +37,16 @@ function App() {
 
   return (
     <>
-    <Header/>
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        {/* <Route path="/:mediaType/:id" element={<Details />} />
-                <Route path="/search/:query" element={<SearchResult />} />
-                <Route path="/explore/:mediaType" element={<Explore />} />
-                <Route path="*" element={<PageNotFound />} /> */}
-      </Routes>
-    </BrowserRouter>
+      <Header />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/:mediaType/:id" element={<Details />} />
+          <Route path="/search/:query" element={<SearchResult />} />
+          <Route path="/explore/:mediaType" element={<Explore />} />
+          <Route path="*" element={<PageNotFound />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }
