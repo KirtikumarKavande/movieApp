@@ -8,6 +8,7 @@ import "./style.scss";
 
 import ContentWrapper from "../contentWrapper/contentWrapper";
 import logo from "../../assets/moviemedia_logo.png";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Header = () => {
   const [show, setShow] = useState("top");
@@ -15,8 +16,8 @@ const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [query, setQuery] = useState("");
   const [showSearch, setShowSearch] = useState("");
-  //   const navigate = useNavigate();
-  //   const location = useLocation();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -34,7 +35,6 @@ const Header = () => {
     }
     setLastScrollY(window.scrollY);
   };
-
   useEffect(() => {
     window.addEventListener("scroll", controlNavbar);
     return () => {
@@ -44,10 +44,8 @@ const Header = () => {
 
   const searchQueryHandler = (event) => {
     if (event.key === "Enter" && query.length > 0) {
-      //   navigate(`/search/${query}`);
-      setTimeout(() => {
-        setShowSearch(false);
-      }, 1000);
+      navigate(`/search/${query}`);
+      setShowSearch(false);
     }
   };
 
