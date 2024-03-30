@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import  { useRef } from "react";
 import {
   BsFillArrowLeftCircleFill,
   BsFillArrowRightCircleFill,
@@ -44,7 +44,7 @@ const Carousel = ({ data, loading, endpoint, title }) => {
       </div>
     );
   };
-
+  console.log("loading...", loading);
   return (
     <div className="carousel">
       <ContentWrapper>
@@ -73,11 +73,7 @@ const Carousel = ({ data, loading, endpoint, title }) => {
                 >
                   <div className="posterBlock">
                     <Img src={posterUrl} />
-                    <CircleRating
-                                            rating={item.vote_average.toFixed(
-                                                1
-                                            )}
-                                        />
+                    <CircleRating rating={item.vote_average.toFixed(1)} />
                   </div>
                   <div className="textBlock">
                     <span className="title">{item.title || item.name}</span>
