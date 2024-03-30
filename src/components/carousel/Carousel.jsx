@@ -1,4 +1,4 @@
-import  { useRef } from "react";
+import { useRef } from "react";
 import {
   BsFillArrowLeftCircleFill,
   BsFillArrowRightCircleFill,
@@ -13,6 +13,7 @@ import PosterFallback from "../../assets/no-poster.png";
 
 import "./style.scss";
 import CircleRating from "../circleRating/CircleRating";
+import Genres from "../genres/Genres";
 
 const Carousel = ({ data, loading, endpoint, title }) => {
   const carouselContainer = useRef();
@@ -75,6 +76,7 @@ const Carousel = ({ data, loading, endpoint, title }) => {
                     <Img src={posterUrl} />
                     <CircleRating rating={item.vote_average.toFixed(1)} />
                   </div>
+                  <Genres data={item.genre_ids.slice(0, 2)} />
                   <div className="textBlock">
                     <span className="title">{item.title || item.name}</span>
                     <span className="date">
