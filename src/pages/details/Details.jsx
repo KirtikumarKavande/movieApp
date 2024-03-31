@@ -4,6 +4,7 @@ import "./style.scss";
 import DetailsBanner from "./detailsBanner/DetailsBanner";
 import Cast from "../../components/cast/Cast";
 import useFetch from "../../hooks/useFetch";
+import VideosSection from "./videosSection/VideosSection";
 
 const Details = () => {
   const { mediaType, id } = useParams();
@@ -17,6 +18,7 @@ const Details = () => {
     <div>
       <DetailsBanner />
       <Cast data={credits?.cast} loading={creditsLoading} />
+      <VideosSection data={data} loading={loading} />
     </div>
   );
 };
