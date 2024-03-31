@@ -5,6 +5,8 @@ import DetailsBanner from "./detailsBanner/DetailsBanner";
 import Cast from "../../components/cast/Cast";
 import useFetch from "../../hooks/useFetch";
 import VideosSection from "./videosSection/VideosSection";
+import Recommendation from "./carousels/Recommendation";
+import Similar from "./carousels/Similar";
 
 const Details = () => {
   const { mediaType, id } = useParams();
@@ -19,6 +21,10 @@ const Details = () => {
       <DetailsBanner />
       <Cast data={credits?.cast} loading={creditsLoading} />
       <VideosSection data={data} loading={loading} />
+      <Similar mediaType={mediaType} id={id} />
+      <Recommendation mediaType={mediaType} id={id} />
+
+
     </div>
   );
 };
