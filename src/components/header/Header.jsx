@@ -6,7 +6,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 import "./style.scss";
 
-import ContentWrapper from "../contentWrapper/contentWrapper";
+import ContentWrapper from "../contentWrapper/ContentWrapper";
 import logo from "../../assets/moviemedia_logo.png";
 import nameOfCompany from "../../assets/movie_media_name.svg";
 
