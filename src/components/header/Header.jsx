@@ -1,14 +1,14 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { HiOutlineSearch } from "react-icons/hi";
 import { SlMenu } from "react-icons/sl";
 import { VscChromeClose } from "react-icons/vsc";
-// import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 import "./style.scss";
 
-import ContentWrapper from "../contentWrapper/contentWrapper";
+import ContentWrapper from "../contentWrapper/ContentWrapper";
 import logo from "../../assets/moviemedia_logo.png";
-import { useLocation, useNavigate } from "react-router-dom";
+import nameOfCompany from "../../assets/movie_media_name.svg";
 
 const Header = () => {
   const [show, setShow] = useState("top");
@@ -18,6 +18,7 @@ const Header = () => {
   const [showSearch, setShowSearch] = useState("");
   const navigate = useNavigate();
   const location = useLocation();
+  const [selected, setSelected] = useState("");
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -35,6 +36,7 @@ const Header = () => {
     }
     setLastScrollY(window.scrollY);
   };
+
   useEffect(() => {
     window.addEventListener("scroll", controlNavbar);
     return () => {
@@ -45,7 +47,9 @@ const Header = () => {
   const searchQueryHandler = (event) => {
     if (event.key === "Enter" && query.length > 0) {
       navigate(`/search/${query}`);
-      setShowSearch(false);
+      setTimeout(() => {
+        setShowSearch(false);
+      }, 1000);
     }
   };
 
@@ -59,15 +63,43 @@ const Header = () => {
     setShowSearch(false);
   };
 
+  const navigationHandler = (type) => {
+    if (type === "movie") {
+      navigate("/explore/movie");
+    } else {
+      navigate("/explore/tv");
+    }
+    setMobileMenu(false);
+  };
+
   return (
     <header className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
       <ContentWrapper>
-        <div className="logo">
+        <div className="logo" onClick={() => navigate("/")}>
           <img src={logo} alt="" />
+          <img src={nameOfCompany} alt="" />
         </div>
         <ul className="menuItems">
-          <li className="menuItem">Movies</li>
-          <li className="menuItem">TV Shows</li>
+          <li
+            style={{ color: selected === "movie" ? "red" : "" }}
+            className="menuItem"
+            onClick={() => {
+              navigationHandler("movie");
+              setSelected("movie");
+            }}
+          >
+            Movies
+          </li>
+          <li
+            style={{ color: selected === "tv" ? "red" : "" }}
+            className="menuItem"
+            onClick={() => {
+              navigationHandler("tv");
+              setSelected("tv");
+            }}
+          >
+            TV Shows
+          </li>
           <li className="menuItem">
             <HiOutlineSearch onClick={openSearch} />
           </li>
