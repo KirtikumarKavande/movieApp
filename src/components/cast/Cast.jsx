@@ -1,7 +1,7 @@
 
 import { useSelector } from "react-redux";
 
-import "./style.scss";
+import "./castStyle.scss";
 
 import ContentWrapper from "../contentWrapper/ContentWrap";
 import Img from "../../../src/components/lazyLoadImage/Img";
