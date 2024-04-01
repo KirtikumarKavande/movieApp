@@ -7,6 +7,7 @@ import useFetch from "../../../hooks/useFetch";
 
 import Img from "../../../components/lazyLoadImage/Img";
 import ContentWrapper from "../../../components/contentWrapper/contentWrapper";
+import fallbcakHomeImg from "../../../assets/fallback-home.jpg";
 
 const HeroBanner = () => {
   const [background, setBackground] = useState("");
@@ -32,7 +33,11 @@ const HeroBanner = () => {
     <div className="heroBanner">
       {!loading && (
         <div className="backdrop-img">
-          <Img src={background} />
+          {!loading ? (
+            <Img src={background} />
+          ) : (
+            <Img src={fallbcakHomeImg || background} />
+          )}
         </div>
       )}
 

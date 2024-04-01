@@ -6,7 +6,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 
 import "./style.scss";
 
-import ContentWrapper from "../contentWrapper/ContentWrapper";
+import ContentWrapper from "../contentWrapper/contentWrapper";
 import logo from "../../assets/moviemedia_logo.png";
 import nameOfCompany from "../../assets/movie_media_name.svg";
 
@@ -87,7 +87,7 @@ const Header = () => {
   return (
     <header className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
       <ContentWrapper>
-        <div className="logo" onClick={() => navigate("/")}>
+        <div className="logo" onClick={() => {navigate("/"); setSelected("")}}>
           <img src={logo} alt="" />
           <img src={nameOfCompany} alt="" />
         </div>
