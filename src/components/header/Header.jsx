@@ -65,12 +65,24 @@ const Header = () => {
 
   const navigationHandler = (type) => {
     if (type === "movie") {
-      navigate("/explore/movie");
+      navigate("/explore/movie", { replace: false });
     } else {
-      navigate("/explore/tv");
+      navigate("/explore/tv"), { replace: false };
     }
     setMobileMenu(false);
   };
+
+  useEffect(() => {
+    const handlePopstate = () => {
+      setSelected("");
+    };
+
+    window.addEventListener("popstate", handlePopstate);
+
+    return () => {
+      window.removeEventListener("popstate", handlePopstate);
+    };
+  }, []);
 
   return (
     <header className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
