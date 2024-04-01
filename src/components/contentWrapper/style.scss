@@ -4,9 +4,3 @@
     margin: 0 auto;
     padding: 0 20px;
 }
-@media screen and (-webkit-min-device-pixel-ratio:0) and (min-resolution:.001dpcm) { 
-    /* Target Chrome specifically */
-    .contentWrapper {
-        max-width: 1200px;
-    }
-}
