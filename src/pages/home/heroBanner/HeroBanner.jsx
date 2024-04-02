@@ -33,11 +33,13 @@ const HeroBanner = () => {
     <div className="heroBanner">
       {!loading && (
         <div className="backdrop-img">
-          {!loading ? (
+          <img style={{width:"100%"}} src={background||fallbcakHomeImg} alt="" />
+
+          {/* {!loading ? (
             <Img src={background} />
           ) : (
             <Img src={fallbcakHomeImg || background} />
-          )}
+          )} */}
         </div>
       )}
 
